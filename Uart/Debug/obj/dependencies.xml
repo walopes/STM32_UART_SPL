@@ -20,7 +20,7 @@
       <source file="..\..\..\stm32_lib\src\stm32f0xx_rcc.c" lastModified="15f22afa3ad">
          <include file="..\..\..\stm32_lib\inc\stm32f0xx_rcc.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="15f47a7bc6a">
+      <source file="..\..\..\main.c" lastModified="15f55e7d4cc">
          <include file="..\..\..\cmsis_boot\stm32f0xx.h"/>
          <include file="..\..\..\stm32_lib\inc\stm32f0xx_rcc.h"/>
          <include file="..\..\..\stm32_lib\inc\stm32f0xx_gpio.h"/>
