@@ -14,11 +14,26 @@
 #include "stm32f0xx_usart.h"
 #include <stdio.h>
 
+// INTERRUPT REQUESTS
+// *************************************************************************************
 
+/* Handler of the UART2 module */
 void USART2_IRQHandler(void)
 {
+	while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
 
 	USART_SendData(USART2,USART_ReceiveData(USART2));
+	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
+//	uint16_t Data;
+//
+//			while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
+//
+//			Data = USART_ReceiveData(USART2); // Collect Char
+//
+//			while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
+//
+//			USART_SendData(USART2, Data); // Echo Char
+
 
 
 //	 /* RXNE handler */
@@ -40,6 +55,7 @@ void USART2_IRQHandler(void)
 //	    }
 }
 
+
 // PERIPHERALS CONFIGURATION
 // *************************************************************************************
 
@@ -59,10 +75,17 @@ void RCCconfig()
 void GPIOconfig()
 {
 	// Board LED Configuration -> PA5
+	// USART TX -> PA2; USART RX -> PA3
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	/* Configure USART Tx | RX*/
+	/* Configure alternate function for the PA2 */
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_1);
+
+	/* Configure alternate function for the PA3 */
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
+
+	/* Configure USART TX and RX*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2  | GPIO_Pin_3;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
@@ -71,19 +94,12 @@ void GPIOconfig()
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 
-	//GPIO_StructInit(&amp,gpio); // VER MELHOR ESSA MERDA
+	/* Configure the LED of the Board*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
-	//GPIO_Init(GPIOA, &amp; gpio);
 	GPIO_Init(GPIOA,&GPIO_InitStructure);
-
-	/* Connect PXx to USARTx_Tx */
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_1);
-
-	/* Connect PXx to USARTx_Rx */
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
 }
 
 /*Configuration of the UART2 on the board -> TX: PA2; RX: PA3*/
@@ -91,7 +107,7 @@ void UARTconfig()
 {
 	USART_InitTypeDef USART_InitStructure;
 
-	/* USARTx configured as follow:
+	/* USART2 configured as follow:
 			- BaudRate = 9600 baud
 			- Word Length = 8 Bits
 			- One Stop Bit
@@ -107,23 +123,37 @@ void UARTconfig()
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
-	/* USART configuration */
+	/* Initialize the UART2 module */
 	USART_Init(USART2, &USART_InitStructure);
 
-	/* Enable USART */
+	/* Enable USART2 */
 	USART_Cmd(USART2, ENABLE);
 
 	/* PARTE NOVA ***********************************/
-	//USART_ITConfig(USART2,USART_IT_RXNE,ENABLE);
+	USART_ITConfig(USART2,USART_IT_RXNE,ENABLE);
 	//USART_ITConfig(USART2,USART_IT_IDLE,ENABLE);
 	/* ***********************************************/
 
-	//NVIC_EnableIRQ(USART2_IRQn);
+	NVIC_EnableIRQ(USART2_IRQn);
 }
 
 // FUNCTIONS
 // *************************************************************************************
 
+/* Toggle the LED PA5 */
+void blink()
+{
+	long c;
+	GPIO_WriteBit(GPIOA,GPIO_Pin_5,SET);
+	for (c=0; c<=1000000; c++);
+	GPIO_WriteBit(GPIOA,GPIO_Pin_5,RESET);
+	for (c=0; c<=1000000; c++);
+
+}
+
+
+// MAIN
+// *************************************************************************************
 
 void main(void)
 {
@@ -136,7 +166,6 @@ void main(void)
 
 	/* Configure the UART */
 	UARTconfig();
-
 
 	USART_SendData(USART2,'T');
 	/* Loop until transmit data register is empty */
@@ -156,24 +185,9 @@ void main(void)
     USART_SendData(USART2,'\r');
     while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
 
-	long c;
-
 	while(1)
 	{
-		uint16_t Data;
-
-		while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
-
-		Data = USART_ReceiveData(USART2); // Collect Char
-
-		while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-
-		USART_SendData(USART2, Data); // Echo Char
-
-		GPIO_WriteBit(GPIOA,GPIO_Pin_5,RESET);
-		for (c=0; c<=100000; ++c);
-		GPIO_WriteBit(GPIOA,GPIO_Pin_5,SET);
-
+		blink();
 	}
 
 }

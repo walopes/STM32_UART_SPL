@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -g -nostartfiles -Map=Uart.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\Uart -TC:\CooCox\CoIDE\configuration\ProgramData\Uart/arm-gcc-link.ld -g">
-      <target file="Uart.elf" lastModified="15f560de0f4">
+      <target file="Uart.elf" lastModified="15f5627fd65">
          <source file="..\obj\stm32f0xx_rcc.o" lastModified="15f56037cab"/>
-         <source file="..\obj\main.o" lastModified="15f560ddeba"/>
+         <source file="..\obj\main.o" lastModified="15f5627fb2a"/>
          <source file="..\obj\startup_stm32f0xx.o" lastModified="15f56037dc4"/>
          <source file="..\obj\system_stm32f0xx_temp.o" lastModified="15f56037e31"/>
          <source file="..\obj\stm32f0xx_gpio.o" lastModified="15f56037efc"/>

@@ -16,8 +16,8 @@
       <target file="system_stm32f0xx_temp.o" lastModified="15f56037e31">
          <source file="..\..\..\cmsis_boot\system_stm32f0xx_temp.c" lastModified="15f22afa440"/>
       </target>
-      <target file="main.o" lastModified="15f560ddeba">
-         <source file="..\..\..\main.c" lastModified="15f560dc90c"/>
+      <target file="main.o" lastModified="15f5627fb2a">
+         <source file="..\..\..\main.c" lastModified="15f5627f33e"/>
       </target>
       <target file="startup_stm32f0xx.o" lastModified="15f56037dc4">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f0xx.s" lastModified="15f22afa3f9"/>
