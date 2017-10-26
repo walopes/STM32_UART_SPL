@@ -40,19 +40,27 @@ void USART2_IRQHandler(void)
 //	    }
 }
 
-/*Configuration of the UART2 on the board -> TX: PA2; RX: PA3*/
-void UARTconfig()
+// PERIPHERALS CONFIGURATION
+// *************************************************************************************
+
+void RCCconfig()
 {
-	/* Handlers of the peripherals */
-	GPIO_InitTypeDef GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-
-	/* Enable GPIO clock */
+	/* Enable GPIO Port A clock */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
-	//RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 
-	/* Enable USART clock */
+	/* Enable USART2 clock */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+
+	/* VEEER */
+	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+}
+
+/* Configuration of the GPIO*/
+void GPIOconfig()
+{
+	// Board LED Configuration -> PA5
+
+	GPIO_InitTypeDef GPIO_InitStructure;
 
 	/* Configure USART Tx | RX*/
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2  | GPIO_Pin_3;
@@ -62,19 +70,26 @@ void UARTconfig()
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	//		/*Configure USART RX*/
-	//		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-	//		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-	//		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	//		//GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	//		//GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-	//		GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	//GPIO_StructInit(&amp,gpio); // VER MELHOR ESSA MERDA
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
+	//GPIO_Init(GPIOA, &amp; gpio);
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
 
 	/* Connect PXx to USARTx_Tx */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_1);
 
 	/* Connect PXx to USARTx_Rx */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
+}
+
+/*Configuration of the UART2 on the board -> TX: PA2; RX: PA3*/
+void UARTconfig()
+{
+	USART_InitTypeDef USART_InitStructure;
 
 	/* USARTx configured as follow:
 			- BaudRate = 9600 baud
@@ -106,112 +121,45 @@ void UARTconfig()
 	//NVIC_EnableIRQ(USART2_IRQn);
 }
 
-/* Configuration of the GPIO which links to the LED of the board -> GPIO PA5*/
-void LEDconfig()
-{
-	;
-}
+// FUNCTIONS
+// *************************************************************************************
+
 
 void main(void)
 {
 
-	/* Call the function to configure the UART */
+	/*Configure the RCC */
+	RCCconfig();
+
+	/*Configure the GPIO */
+	GPIOconfig();
+
+	/* Configure the UART */
 	UARTconfig();
 
-	/* Call the function to configure the LED */
-	// LEDconfig();
+
+	USART_SendData(USART2,'T');
+	/* Loop until transmit data register is empty */
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART2,'E');
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART2,'S');
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART2,'T');
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART2,'E');
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART2,'!');
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+    USART_SendData(USART2,'\n');
+    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+    USART_SendData(USART2,'\r');
+    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
 
 	long c;
-	//USART_SendData(USART2,"Abracadabra");
-	USART_SendData(USART2,'B');
-
-	USART_SendData(USART2,'R');
-
-
-	USART_SendData(USART2,'A');
-
-	USART_SendData(USART2,'C');
-
-	USART_SendData(USART2,'A');
-
-	USART_SendData(USART2,'D');
-
-	USART_SendData(USART2,'A');
-	USART_SendData(USART2,'B');
-	USART_SendData(USART2,'R');
-	USART_SendData(USART2,'A');
-	USART_SendData(USART2,'!');
-//			  /* Loop until the end of transmission */
-//			  /* The software must wait until TC=1. The TC flag remains cleared during all data
-//			     transfers and it is set by hardware at the last frame’s end of transmission*/
-//			  //while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
-//
-//			  for(c=0;c<1000000;c++);
-//
-    USART_SendData(USART2,'\n');
-    USART_SendData(USART2,'\r');
-
-    /* Loop until transmit data register is empty */
-    		  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-    		  {}
 
 	while(1)
 	{
-		/* Output a message on Hyperterminal using printf function */
-		  //printf("\n\rUSART Printf Example\n\r");
-
-//		USART_SendData(USART2,'B');
-//		/* Loop until transmit data register is empty */
-//		  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//		  {}
-//		USART_SendData(USART2,'R');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'A');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'C');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'A');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'D');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'A');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'B');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'R');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'A');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//		USART_SendData(USART2,'!');
-//		/* Loop until transmit data register is empty */
-//				  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//				  {}
-//	    USART_SendData(USART2,'\n');
-//	    USART_SendData(USART2,'\r');
-//
-//	    /* Loop until transmit data register is empty */
-//	    		  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
-//	    		  {}
-
-	    //for(c=0;c<1000000;c++);
 		uint16_t Data;
 
 		while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
@@ -221,6 +169,10 @@ void main(void)
 		while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
 
 		USART_SendData(USART2, Data); // Echo Char
+
+		GPIO_WriteBit(GPIOA,GPIO_Pin_5,RESET);
+		for (c=0; c<=100000; ++c);
+		GPIO_WriteBit(GPIOA,GPIO_Pin_5,SET);
 
 	}
 
