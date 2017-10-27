@@ -14,6 +14,8 @@
 #include "stm32f0xx_usart.h"
 #include <stdio.h>
 
+uint8_t VAL = 0;
+
 // INTERRUPT REQUESTS
 // *************************************************************************************
 
@@ -21,38 +23,17 @@
 void USART2_IRQHandler(void)
 {
 	while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
-
-	USART_SendData(USART2,USART_ReceiveData(USART2));
+	uint16_t character = USART_ReceiveData(USART2);
+	USART_SendData(USART2,character);
 	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-//	uint16_t Data;
-//
-//			while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET); // Wait for Char
-//
-//			Data = USART_ReceiveData(USART2); // Collect Char
-//
-//			while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-//
-//			USART_SendData(USART2, Data); // Echo Char
+}
 
-
-
-//	 /* RXNE handler */
-//	    if(USART_GetITStatus(USART2, USART_IT_RXNE ) != RESET)
-//	    {
-//	        /* If received 't', toggle LED and transmit 'T' */
-//	        if((char)USART_ReceiveData(USART2) == 't')
-//	        {
-//	            //led_toggle();
-//	            USART_SendData(USART2, 'T');
-//	            /* Wait until Tx data register is empty, not really
-//	             * required for this example but put in here anyway.
-//	             */
-//	            /*
-//	            while(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET)
-//	            {
-//	            }*/
-//	        }
-//	    }
+void USART1_IRQHandler(void)
+{
+	while(USART_GetFlagStatus(USART1, USART_FLAG_IDLE) == RESET); // Wait for Char
+	uint16_t character = USART_ReceiveData(USART1);
+	USART_SendData(USART2,character);
+	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
 }
 
 
@@ -64,18 +45,20 @@ void RCCconfig()
 	/* Enable GPIO Port A clock */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
+	/* Enable USART1 clock */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
+
 	/* Enable USART2 clock */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
-	/* VEEER */
-	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 }
 
 /* Configuration of the GPIO*/
 void GPIOconfig()
 {
 	// Board LED Configuration -> PA5
-	// USART TX -> PA2; USART RX -> PA3
+	// UART2 TX -> PA2; UART2 RX -> PA3
+	// UART1 TX -> PA9; UART1 RX -> PA10
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -85,7 +68,21 @@ void GPIOconfig()
 	/* Configure alternate function for the PA3 */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
 
-	/* Configure USART TX and RX*/
+	/* Configure alternate function for the PA9*/
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_0);
+
+	/* Configure alternate function for the PA10 */
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_0);
+
+	/* Configure USART1 TX and RX*/
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9  | GPIO_Pin_10;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	/* Configure USART2 TX and RX (Emulated in PC) */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2  | GPIO_Pin_3;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
@@ -105,10 +102,30 @@ void GPIOconfig()
 /*Configuration of the UART2 on the board -> TX: PA2; RX: PA3*/
 void UARTconfig()
 {
+
 	USART_InitTypeDef USART_InitStructure;
 
+	//USART_DeInit(USART1);
+	USART_DeInit(USART2);
+
+	/* USART1 configured as follow:
+				- BaudRate = 9600 baud
+				- Word Length = 8 Bits
+				- One Stop Bit
+				- No parity
+				- Hardware flow control disabled (RTS and CTS signals)
+				- Receive and transmit enabled
+				*/
+	USART_InitStructure.USART_BaudRate = 9600;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(USART1, &USART_InitStructure);
+
 	/* USART2 configured as follow:
-			- BaudRate = 9600 baud
+			- BaudRate = 38400 baud
 			- Word Length = 8 Bits
 			- One Stop Bit
 			- No parity
@@ -122,19 +139,20 @@ void UARTconfig()
 	USART_InitStructure.USART_Parity = USART_Parity_No;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-
-	/* Initialize the UART2 module */
 	USART_Init(USART2, &USART_InitStructure);
 
-	/* Enable USART2 */
-	USART_Cmd(USART2, ENABLE);
-
-	/* PARTE NOVA ***********************************/
+	/* Configure Interruption on the USARTx module */
+	//USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);
+	//USART_ITConfig(USART1,USART_IT_IDLE,ENABLE);
 	USART_ITConfig(USART2,USART_IT_RXNE,ENABLE);
-	//USART_ITConfig(USART2,USART_IT_IDLE,ENABLE);
-	/* ***********************************************/
 
+	/* Enable interrupt of the USARTx*/
 	NVIC_EnableIRQ(USART2_IRQn);
+	//NVIC_EnableIRQ(USART1_IRQn);
+
+	/* Enable USARTx */
+	//USART_Cmd(USART1, ENABLE);
+	USART_Cmd(USART2, ENABLE);
 }
 
 // FUNCTIONS
@@ -149,6 +167,18 @@ void blink()
 	GPIO_WriteBit(GPIOA,GPIO_Pin_5,RESET);
 	for (c=0; c<=1000000; c++);
 
+}
+
+/* Print the data via UART */
+void print(char *string)
+{
+	while(*string)
+	{
+		USART_SendData(USART2,*string++);
+		/* Loop until transmit data register is empty */
+		//while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+		while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
+	}
 }
 
 
@@ -167,27 +197,21 @@ void main(void)
 	/* Configure the UART */
 	UARTconfig();
 
-	USART_SendData(USART2,'T');
-	/* Loop until transmit data register is empty */
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-	USART_SendData(USART2,'E');
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-	USART_SendData(USART2,'S');
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-	USART_SendData(USART2,'T');
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-	USART_SendData(USART2,'E');
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-	USART_SendData(USART2,'!');
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-    USART_SendData(USART2,'\n');
-    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-    USART_SendData(USART2,'\r');
-    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+	blink();
+	blink();
+	blink();
+	blink();
+
+	print("Teste!\n\r");
 
 	while(1)
 	{
-		blink();
+		if(VAL)
+		{
+			VAL = 0;
+			blink();
+		}
+
 	}
 
 }
