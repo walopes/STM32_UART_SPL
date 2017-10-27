@@ -45,6 +45,9 @@ void RCCconfig()
 	/* Enable GPIO Port A clock */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
+	/* Enable GPIO Port B clock */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+
 	/* Enable USART1 clock */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
 
@@ -68,19 +71,19 @@ void GPIOconfig()
 	/* Configure alternate function for the PA3 */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
 
-	/* Configure alternate function for the PA9*/
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_0);
+	/* Configure alternate function for the PB6*/
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
 
-	/* Configure alternate function for the PA10 */
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_0);
+	/* Configure alternate function for the PB7 */
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);
 
 	/* Configure USART1 TX and RX*/
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9  | GPIO_Pin_10;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6  | GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 	/* Configure USART2 TX and RX (Emulated in PC) */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2  | GPIO_Pin_3;
@@ -105,7 +108,7 @@ void UARTconfig()
 
 	USART_InitTypeDef USART_InitStructure;
 
-	//USART_DeInit(USART1);
+	USART_DeInit(USART1);
 	USART_DeInit(USART2);
 
 	/* USART1 configured as follow:
@@ -125,7 +128,7 @@ void UARTconfig()
 	USART_Init(USART1, &USART_InitStructure);
 
 	/* USART2 configured as follow:
-			- BaudRate = 38400 baud
+			- BaudRate = 9600 baud
 			- Word Length = 8 Bits
 			- One Stop Bit
 			- No parity
@@ -141,6 +144,12 @@ void UARTconfig()
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 	USART_Init(USART2, &USART_InitStructure);
 
+//	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
+//	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+//	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0;
+//	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0;
+//	NVIC_Init(&NVIC_InitStruct);
+
 	/* Configure Interruption on the USARTx module */
 	//USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);
 	//USART_ITConfig(USART1,USART_IT_IDLE,ENABLE);
@@ -151,7 +160,7 @@ void UARTconfig()
 	//NVIC_EnableIRQ(USART1_IRQn);
 
 	/* Enable USARTx */
-	//USART_Cmd(USART1, ENABLE);
+	USART_Cmd(USART1, ENABLE);
 	USART_Cmd(USART2, ENABLE);
 }
 
@@ -211,7 +220,10 @@ void main(void)
 			VAL = 0;
 			blink();
 		}
-
+		USART_SendData(USART2,'a');
+		while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
+		USART_SendData(USART1,'a');
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
 	}
 
 }
