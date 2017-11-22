@@ -65,16 +65,18 @@ void GPIOconfig()
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
+	// USART2
 	/* Configure alternate function for the PA2 */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_1);
 
 	/* Configure alternate function for the PA3 */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_1);
 
-	/* Configure alternate function for the PB6*/
+	// USART1
+	/* Configure alternate function for the PB6 -> USART1 TX*/
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
 
-	/* Configure alternate function for the PB7 */
+	/* Configure alternate function for the PB7 -> USART1 RX */
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);
 
 	/* Configure USART1 TX and RX*/
@@ -220,10 +222,10 @@ void main(void)
 			VAL = 0;
 			blink();
 		}
-		USART_SendData(USART2,'a');
-		while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
-		USART_SendData(USART1,'a');
-		while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+		//USART_SendData(USART2,'a');
+		//while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
+		//USART_SendData(USART1,'a');
+		//while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
 	}
 
 }

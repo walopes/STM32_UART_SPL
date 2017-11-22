@@ -411,7 +411,7 @@ Linker script and memory map
 
                 0x20002000                _eram = 0x20002000
 
-.text           0x08000000      0xeb4
+.text           0x08000000      0xe78
  *(.isr_vector)
  .isr_vector    0x08000000       0xc4 ..\obj\startup_stm32f0xx.o
                 0x08000000                g_pfnVectors
@@ -455,91 +455,91 @@ Linker script and memory map
                 0x08000638                blink
  .text.print    0x0800068c       0x44 ..\obj\main.o
                 0x0800068c                print
- .text.main     0x080006d0       0x84 ..\obj\main.o
+ .text.main     0x080006d0       0x48 ..\obj\main.o
                 0x080006d0                main
  .text.Reset_Handler
-                0x08000754       0x4c ..\obj\startup_stm32f0xx.o
-                0x08000754                Reset_Handler
+                0x08000718       0x4c ..\obj\startup_stm32f0xx.o
+                0x08000718                Reset_Handler
  .text.Default_Handler
-                0x080007a0        0x2 ..\obj\startup_stm32f0xx.o
-                0x080007a0                TIM1_CC_IRQHandler
-                0x080007a0                HardFault_Handler
-                0x080007a0                ADC1_COMP_IRQHandler
-                0x080007a0                SysTick_Handler
-                0x080007a0                PVD_IRQHandler
-                0x080007a0                PendSV_Handler
-                0x080007a0                NMI_Handler
-                0x080007a0                I2C1_IRQHandler
-                0x080007a0                SPI1_IRQHandler
-                0x080007a0                TIM6_DAC_IRQHandler
-                0x080007a0                EXTI2_3_IRQHandler
-                0x080007a0                I2C2_IRQHandler
-                0x080007a0                TIM17_IRQHandler
-                0x080007a0                RTC_IRQHandler
-                0x080007a0                TIM16_IRQHandler
-                0x080007a0                TIM3_IRQHandler
-                0x080007a0                EXTI4_15_IRQHandler
-                0x080007a0                RCC_IRQHandler
-                0x080007a0                DMA1_Channel1_IRQHandler
-                0x080007a0                Default_Handler
-                0x080007a0                CEC_IRQHandler
-                0x080007a0                TIM14_IRQHandler
-                0x080007a0                DMA1_Channel4_5_IRQHandler
-                0x080007a0                TIM15_IRQHandler
-                0x080007a0                EXTI0_1_IRQHandler
-                0x080007a0                SPI2_IRQHandler
-                0x080007a0                SVC_Handler
-                0x080007a0                TS_IRQHandler
-                0x080007a0                WWDG_IRQHandler
-                0x080007a0                TIM2_IRQHandler
-                0x080007a0                DMA1_Channel2_3_IRQHandler
-                0x080007a0                FLASH_IRQHandler
-                0x080007a0                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x080007a2        0x2 00
+                0x08000764        0x2 ..\obj\startup_stm32f0xx.o
+                0x08000764                TIM1_CC_IRQHandler
+                0x08000764                HardFault_Handler
+                0x08000764                ADC1_COMP_IRQHandler
+                0x08000764                SysTick_Handler
+                0x08000764                PVD_IRQHandler
+                0x08000764                PendSV_Handler
+                0x08000764                NMI_Handler
+                0x08000764                I2C1_IRQHandler
+                0x08000764                SPI1_IRQHandler
+                0x08000764                TIM6_DAC_IRQHandler
+                0x08000764                EXTI2_3_IRQHandler
+                0x08000764                I2C2_IRQHandler
+                0x08000764                TIM17_IRQHandler
+                0x08000764                RTC_IRQHandler
+                0x08000764                TIM16_IRQHandler
+                0x08000764                TIM3_IRQHandler
+                0x08000764                EXTI4_15_IRQHandler
+                0x08000764                RCC_IRQHandler
+                0x08000764                DMA1_Channel1_IRQHandler
+                0x08000764                Default_Handler
+                0x08000764                CEC_IRQHandler
+                0x08000764                TIM14_IRQHandler
+                0x08000764                DMA1_Channel4_5_IRQHandler
+                0x08000764                TIM15_IRQHandler
+                0x08000764                EXTI0_1_IRQHandler
+                0x08000764                SPI2_IRQHandler
+                0x08000764                SVC_Handler
+                0x08000764                TS_IRQHandler
+                0x08000764                WWDG_IRQHandler
+                0x08000764                TIM2_IRQHandler
+                0x08000764                DMA1_Channel2_3_IRQHandler
+                0x08000764                FLASH_IRQHandler
+                0x08000764                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x08000766        0x2 00
  .text.SystemInit1
-                0x080007a4       0x8c ..\obj\system_stm32f0xx_temp.o
-                0x080007a4                SystemInit
-                0x080007a4                SystemInit1
+                0x08000768       0x8c ..\obj\system_stm32f0xx_temp.o
+                0x08000768                SystemInit
+                0x08000768                SystemInit1
  .text.SetSysClock1
-                0x08000830       0xe0 ..\obj\system_stm32f0xx_temp.o
-                0x08000830                SetSysClock
+                0x080007f4       0xe0 ..\obj\system_stm32f0xx_temp.o
+                0x080007f4                SetSysClock
  .text.GPIO_Init
-                0x08000910      0x138 ..\obj\stm32f0xx_gpio.o
-                0x08000910                GPIO_Init
+                0x080008d4      0x138 ..\obj\stm32f0xx_gpio.o
+                0x080008d4                GPIO_Init
  .text.GPIO_WriteBit
-                0x08000a48       0x30 ..\obj\stm32f0xx_gpio.o
-                0x08000a48                GPIO_WriteBit
+                0x08000a0c       0x30 ..\obj\stm32f0xx_gpio.o
+                0x08000a0c                GPIO_WriteBit
  .text.GPIO_PinAFConfig
-                0x08000a78       0x9c ..\obj\stm32f0xx_gpio.o
-                0x08000a78                GPIO_PinAFConfig
+                0x08000a3c       0x9c ..\obj\stm32f0xx_gpio.o
+                0x08000a3c                GPIO_PinAFConfig
  .text.USART_DeInit
-                0x08000b14       0x58 ..\obj\stm32f0xx_usart.o
-                0x08000b14                USART_DeInit
+                0x08000ad8       0x58 ..\obj\stm32f0xx_usart.o
+                0x08000ad8                USART_DeInit
  .text.USART_Init
-                0x08000b6c      0x160 ..\obj\stm32f0xx_usart.o
-                0x08000b6c                USART_Init
+                0x08000b30      0x160 ..\obj\stm32f0xx_usart.o
+                0x08000b30                USART_Init
  .text.USART_Cmd
-                0x08000ccc       0x3c ..\obj\stm32f0xx_usart.o
-                0x08000ccc                USART_Cmd
+                0x08000c90       0x3c ..\obj\stm32f0xx_usart.o
+                0x08000c90                USART_Cmd
  .text.USART_SendData
-                0x08000d08       0x24 ..\obj\stm32f0xx_usart.o
-                0x08000d08                USART_SendData
+                0x08000ccc       0x24 ..\obj\stm32f0xx_usart.o
+                0x08000ccc                USART_SendData
  .text.USART_ReceiveData
-                0x08000d2c       0x1c ..\obj\stm32f0xx_usart.o
-                0x08000d2c                USART_ReceiveData
+                0x08000cf0       0x1c ..\obj\stm32f0xx_usart.o
+                0x08000cf0                USART_ReceiveData
  .text.USART_ITConfig
-                0x08000d48       0x84 ..\obj\stm32f0xx_usart.o
-                0x08000d48                USART_ITConfig
+                0x08000d0c       0x84 ..\obj\stm32f0xx_usart.o
+                0x08000d0c                USART_ITConfig
  .text.USART_GetFlagStatus
-                0x08000dcc       0x3c ..\obj\stm32f0xx_usart.o
-                0x08000dcc                USART_GetFlagStatus
- .text          0x08000e08       0x9c d:/coocox/gcc-arm-none-eabi-4_7-2013q2-20130614-win32/gnu tools arm embedded/4.7 2013q2/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
-                0x08000e08                __aeabi_uidiv
-                0x08000e08                __udivsi3
-                0x08000e90                __aeabi_uidivmod
- .text          0x08000ea4        0x4 d:/coocox/gcc-arm-none-eabi-4_7-2013q2-20130614-win32/gnu tools arm embedded/4.7 2013q2/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x08000ea4                __aeabi_idiv0
-                0x08000ea4                __aeabi_ldiv0
+                0x08000d90       0x3c ..\obj\stm32f0xx_usart.o
+                0x08000d90                USART_GetFlagStatus
+ .text          0x08000dcc       0x9c d:/coocox/gcc-arm-none-eabi-4_7-2013q2-20130614-win32/gnu tools arm embedded/4.7 2013q2/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x08000dcc                __aeabi_uidiv
+                0x08000dcc                __udivsi3
+                0x08000e54                __aeabi_uidivmod
+ .text          0x08000e68        0x4 d:/coocox/gcc-arm-none-eabi-4_7-2013q2-20130614-win32/gnu tools arm embedded/4.7 2013q2/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x08000e68                __aeabi_idiv0
+                0x08000e68                __aeabi_ldiv0
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -553,38 +553,38 @@ Linker script and memory map
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x08000ea8        0xc ..\obj\main.o
+ .rodata        0x08000e6c        0xc ..\obj\main.o
  *(.eh_fram e*)
 
-.glue_7         0x08000eb4        0x0
+.glue_7         0x08000e78        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x08000eb4        0x0
+.glue_7t        0x08000e78        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x08000eb4        0x0
+.vfp11_veneer   0x08000e78        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08000eb4        0x0
+.v4_bx          0x08000e78        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x08000eb4        0x0
+.iplt           0x08000e78        0x0
  .iplt          0x00000000        0x0 ..\obj\stm32f0xx_rcc.o
 
-.rel.dyn        0x08000eb4        0x0
+.rel.dyn        0x08000e78        0x0
  .rel.iplt      0x00000000        0x0 ..\obj\stm32f0xx_rcc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08000eb4                __exidx_start = .
+                0x08000e78                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08000eb4                __exidx_end = .
-                0x08000eb4                __etext = .
-                0x08000eb4                _sidata = __etext
+                0x08000e78                __exidx_end = .
+                0x08000e78                __etext = .
+                0x08000e78                _sidata = __etext
 
-.data           0x20000000       0x10 load address 0x08000eb4
+.data           0x20000000       0x10 load address 0x08000e78
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -609,10 +609,10 @@ Linker script and memory map
                 0x20000010                __data_end__ = .
                 0x20000010                _edata = __data_end__
 
-.igot.plt       0x20000010        0x0 load address 0x08000ec4
+.igot.plt       0x20000010        0x0 load address 0x08000e88
  .igot.plt      0x00000000        0x0 ..\obj\stm32f0xx_rcc.o
 
-.bss            0x20000010        0x4 load address 0x08000ec4
+.bss            0x20000010        0x4 load address 0x08000e88
                 0x20000010                . = ALIGN (0x4)
                 0x20000010                __bss_start__ = .
                 0x20000010                _sbss = __bss_start__
@@ -632,7 +632,7 @@ Linker script and memory map
  *(.heap*)
                 0x20000014                __HeapLimit = .
 
-.co_stack       0x20000014        0x4 load address 0x08000ec8
+.co_stack       0x20000014        0x4 load address 0x08000e8c
                 0x20000018                . = ALIGN (0x8)
  *fill*         0x20000014        0x4 00
  *(.co_stack .co_stack.*)
@@ -699,13 +699,13 @@ OUTPUT(Uart.elf elf32-littlearm)
  .debug_ranges  0x000001d0       0x70 ..\obj\stm32f0xx_gpio.o
  .debug_ranges  0x00000240      0x190 ..\obj\stm32f0xx_usart.o
 
-.debug_line     0x00000000     0x134a
+.debug_line     0x00000000     0x133f
  .debug_line    0x00000000      0x507 ..\obj\stm32f0xx_rcc.o
- .debug_line    0x00000507      0x337 ..\obj\main.o
- .debug_line    0x0000083e       0xb6 ..\obj\startup_stm32f0xx.o
- .debug_line    0x000008f4      0x1a7 ..\obj\system_stm32f0xx_temp.o
- .debug_line    0x00000a9b      0x2e2 ..\obj\stm32f0xx_gpio.o
- .debug_line    0x00000d7d      0x5cd ..\obj\stm32f0xx_usart.o
+ .debug_line    0x00000507      0x32c ..\obj\main.o
+ .debug_line    0x00000833       0xb6 ..\obj\startup_stm32f0xx.o
+ .debug_line    0x000008e9      0x1a7 ..\obj\system_stm32f0xx_temp.o
+ .debug_line    0x00000a90      0x2e2 ..\obj\stm32f0xx_gpio.o
+ .debug_line    0x00000d72      0x5cd ..\obj\stm32f0xx_usart.o
 
 .debug_str      0x00000000     0x1433
  .debug_str     0x00000000      0x654 ..\obj\stm32f0xx_rcc.o
