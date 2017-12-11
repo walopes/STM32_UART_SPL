@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -g -nostartfiles -Map=Uart.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\Uart -TC:\CooCox\CoIDE\configuration\ProgramData\Uart/arm-gcc-link.ld -g">
-      <target file="Uart.elf" lastModified="15fdfde0612">
-         <source file="..\obj\stm32f0xx_rcc.o" lastModified="15f5997236f"/>
-         <source file="..\obj\main.o" lastModified="15fdfde01fb"/>
-         <source file="..\obj\startup_stm32f0xx.o" lastModified="15f599723d9"/>
-         <source file="..\obj\system_stm32f0xx_temp.o" lastModified="15f5997241b"/>
-         <source file="..\obj\stm32f0xx_gpio.o" lastModified="15f59972470"/>
-         <source file="..\obj\stm32f0xx_usart.o" lastModified="15f599724e5"/>
-         <source file="..\obj\stm32f0xx_tim.o" lastModified="15f599725b8"/>
+      <target file="Uart.elf" lastModified="15feefdb342">
+         <source file="..\obj\stm32f0xx_rcc.o" lastModified="15feb9941fc"/>
+         <source file="..\obj\main.o" lastModified="15feefdb0e1"/>
+         <source file="..\obj\startup_stm32f0xx.o" lastModified="15feb99430a"/>
+         <source file="..\obj\system_stm32f0xx_temp.o" lastModified="15feb9943ac"/>
+         <source file="..\obj\stm32f0xx_gpio.o" lastModified="15feb99443f"/>
+         <source file="..\obj\stm32f0xx_usart.o" lastModified="15feb9944e2"/>
+         <source file="..\obj\stm32f0xx_tim.o" lastModified="15feb994626"/>
       </target>
    </processor>
 </history>

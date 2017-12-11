@@ -13,8 +13,6 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="3"/>
-<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -25,19 +23,11 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/main.c" title="main.c" tooltip="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Uart/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5346" selectionTopPixel="4109"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="542" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.h" partName="stm32f0xx_rcc.h" path="C:/Users/Acer/UART/stm32_lib/inc/stm32f0xx_rcc.h" title="stm32f0xx_rcc.h" tooltip="C:/Users/Acer/UART/stm32_lib/inc/stm32f0xx_rcc.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Uart/stm32_lib/inc/stm32f0xx_rcc.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="13791" selectionTopPixel="2632"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.c" partName="stm32f0xx_rcc.c" path="C:/Users/Acer/UART/stm32_lib/src/stm32f0xx_rcc.c" title="stm32f0xx_rcc.c" tooltip="C:/Users/Acer/UART/stm32_lib/src/stm32f0xx_rcc.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Uart/stm32_lib/src/stm32f0xx_rcc.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="22" selectionOffset="49567" selectionTopPixel="24720"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f0xx.s" partName="startup_stm32f0xx.s" path="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/cmsis_boot/startup/startup_stm32f0xx.s" title="startup_stm32f0xx.s" tooltip="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/cmsis_boot/startup/startup_stm32f0xx.s" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Uart/cmsis_boot/startup/startup_stm32f0xx.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DrvGps_NEO_6M.c" partName="DrvGps_NEO_6M.c" path="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c" title="DrvGps_NEO_6M.c" tooltip="C:/Users/Acer/Documents/CooCox/STM32_UART_SPL/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="6887" selectionTopPixel="4060"/>
 </editor>
 </editors>
 <views>
@@ -45,10 +35,12 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/Uart"/>
-<element path="/Uart/stm32_lib"/>
-<element path="/Uart/stm32_lib/inc"/>
-<element path="/Uart/stm32_lib/src"/>
+<element path="/Uart/CoX_Driver"/>
+<element path="/Uart/CoX_Driver/GPS_NEO_6M"/>
 </expanded>
+<selection>
+<element path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c"/>
+</selection>
 </viewState>
 </view>
 <view id="org.coocox.component.ui.ComponentView" partName="Components">
@@ -202,49 +194,34 @@
 <view id="org.coocox.builder.ui.views.ProjectView"/>
 <fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1956860">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@1956860">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1956860">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1956860">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b532d0" ratio="0.7" ratioLeft="644" ratioRight="276" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1956860">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b532d0" ratio="0.7" ratioLeft="644" ratioRight="276" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1956860">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@14c3f42" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1b532d0">
-<folder activePageID="org.coocox.codebugger.trace.ui.traceview" appearance="2" expanded="2">
-<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@14c3f42" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1b532d0">&#x0A;<folder activePageID="org.coocox.codebugger.trace.ui.traceview" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@95a15f" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1956860">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@95a15f" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1956860">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
@@ -260,80 +237,12 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Uart/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Uart/stm32_lib/inc/stm32f0xx_rcc.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Uart/stm32_lib/src/stm32f0xx_rcc.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/Uart/cmsis_boot/startup/startup_stm32f0xx.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7765" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7805" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="8169" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2223" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6806" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6892" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2376" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2420" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2370" y="0"/>
-</item>
-<item historyLabel="startup_stm32f0xx.s" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6806" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6849" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6894" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7765" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1808" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1813" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1896" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1950" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2047" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2419" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7765" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7805" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7821" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7834" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="8169" y="0"/>
 </item>
@@ -407,10 +316,82 @@
 <position info="not_deleted" x="6311" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6124" y="0"/>
+<position info="not_deleted" x="6126" y="0"/>
+</item>
+<item historyLabel="stm32f0xx_rcc.h" index="1">
+<position info="not_deleted" x="13791" y="21"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="6126" y="0"/>
+</item>
+<item historyLabel="stm32f0xx_rcc.c" index="2">
+<position info="not_deleted" x="49567" y="22"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="6126" y="0"/>
+</item>
+<item historyLabel="startup_stm32f0xx.s" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="584" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="300" y="9"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="12144" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="752" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="2032" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="12144" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="3778" y="41"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="12144" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="3778" y="41"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="2743" y="8"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="3995" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="3236" y="15"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="2023" y="7"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="3236" y="15"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="2023" y="7"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="4024" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.h" index="4">
+<position info="not_deleted" x="2023" y="7"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8546" y="0"/>
+</item>
+<item historyLabel="DrvGps_NEO_6M.c" index="5">
+<position info="not_deleted" x="6887" y="8"/>
 </item>
 <item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="1289" y="9"/>
+<position info="not_deleted" x="8546" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -419,51 +400,51 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f0xx.s" tooltip="Uart/cmsis_boot/startup/startup_stm32f0xx.s">
-<persistable path="/Uart/cmsis_boot/startup/startup_stm32f0xx.s"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Uart.coproj" tooltip="C:\Users\Acer\Documents\CooCox\Stm32GPS\Uart.coproj">
+<persistable uri="file:/C:/Users/Acer/Documents/CooCox/Stm32GPS/Uart.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DrvGps_NEO_6M.c" tooltip="Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c">
+<persistable path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DrvGps_NEO_6M.h" tooltip="Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.h">
+<persistable path="/Uart/CoX_Driver/GPS_NEO_6M/DrvGps_NEO_6M.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_usart.c" tooltip="Uart/stm32_lib/src/stm32f0xx_usart.c">
 <persistable path="/Uart/stm32_lib/src/stm32f0xx_usart.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_gpio.h" tooltip="Uart/stm32_lib/inc/stm32f0xx_gpio.h">
-<persistable path="/Uart/stm32_lib/inc/stm32f0xx_gpio.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx.h" tooltip="Uart/cmsis_boot/stm32f0xx.h">
-<persistable path="/Uart/cmsis_boot/stm32f0xx.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="D:\Coocox\gcc-arm-none-eabi-4_7-2013q2-20130614-win32\GNU Tools ARM Embedded\4.7 2013q2\arm-none-eabi\include\stdio.h">
-<persistable path="D:\Coocox\gcc-arm-none-eabi-4_7-2013q2-20130614-win32\GNU Tools ARM Embedded\4.7 2013q2\arm-none-eabi\include\stdio.h" project="Uart"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.c" tooltip="Uart/stm32_lib/src/stm32f0xx_rcc.c">
-<persistable path="/Uart/stm32_lib/src/stm32f0xx_rcc.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.h" tooltip="Uart/stm32_lib/inc/stm32f0xx_rcc.h">
-<persistable path="/Uart/stm32_lib/inc/stm32f0xx_rcc.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Uart/main.c">
 <persistable path="/Uart/main.c"/>
 </file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Uart.coproj" tooltip="C:\Users\Acer\Dropbox\EstudoDirigido_Willian\UART\Uart.coproj">
+<persistable uri="file:/C:/Users/Acer/Dropbox/EstudoDirigido_Willian/UART/Uart.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Uart.cogui" tooltip="C:\Users\Acer\Dropbox\EstudoDirigido_Willian\STM32_UART_SPL\Uart.cogui">
+<persistable uri="file:/C:/Users/Acer/Dropbox/EstudoDirigido_Willian/STM32_UART_SPL/Uart.cogui"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Uart.coproj" tooltip="C:\Users\Acer\UART\Uart.coproj">
+<persistable uri="file:/C:/Users/Acer/UART/Uart.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="C:\Users\Acer\UART\main.c">
+<persistable uri="file:/C:/Users/Acer/UART/main.c"/>
+</file>
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage horizontalPosition="0" selectedItemId="1553" subPageIndex="3" verticalPosition="0"/>
+<persistable>&#x0A;<subPage/>
 </persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="TesteBlink/main.c">
-<persistable path="/TesteBlink/main.c"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Uart.coproj" tooltip="C:\Users\Acer\Dropbox\EstudoDirigido_Willian\STM32_UART_SPL\Uart.coproj">
+<persistable uri="file:/C:/Users/Acer/Dropbox/EstudoDirigido_Willian/STM32_UART_SPL/Uart.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_gpio.h" tooltip="TesteBlinkBoard/stm32_lib/inc/stm32f0xx_gpio.h">
-<persistable path="/TesteBlinkBoard/stm32_lib/inc/stm32f0xx_gpio.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="D:\Coocox\gcc-arm-none-eabi-4_7-2013q2-20130614-win32\GNU Tools ARM Embedded\4.7 2013q2\arm-none-eabi\include\stdio.h">
-<persistable path="D:\Coocox\gcc-arm-none-eabi-4_7-2013q2-20130614-win32\GNU Tools ARM Embedded\4.7 2013q2\arm-none-eabi\include\stdio.h" project="Uart"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.c" tooltip="Uart/stm32_lib/src/stm32f0xx_rcc.c">
-<persistable path="/Uart/stm32_lib/src/stm32f0xx_rcc.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx_rcc.h" tooltip="Uart/stm32_lib/inc/stm32f0xx_rcc.h">
-<persistable path="/Uart/stm32_lib/inc/stm32f0xx_rcc.h"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Uart.coproj" tooltip="C:\Users\Acer\Dropbox\EstudoDirigido_Willian\STM32_Raw_2usarts2\Uart.coproj">
+<persistable uri="file:/C:/Users/Acer/Dropbox/EstudoDirigido_Willian/STM32_Raw_2usarts2/Uart.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f0xx.s" tooltip="Uart/cmsis_boot/startup/startup_stm32f0xx.s">
 <persistable path="/Uart/cmsis_boot/startup/startup_stm32f0xx.s"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm0.h" tooltip="Uart/cmsis_core/core_cm0.h">
+<persistable path="/Uart/cmsis_core/core_cm0.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f0xx.h" tooltip="Uart/cmsis_boot/stm32f0xx.h">
+<persistable path="/Uart/cmsis_boot/stm32f0xx.h"/>
 </file>
 </mruList>
 </workbench>

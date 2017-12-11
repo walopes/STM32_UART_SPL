@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m0 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F030R8T6 -DSTM32F030X8 -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\stm32_lib\inc -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\cmsis_boot -I..\..\..\..\..\Users\Acer\Documents\CooCox -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\stm32_lib -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\cmsis_core">
-      <target file="stm32f0xx_gpio.o" lastModified="15f59972470">
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m0 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F030R8T6 -DSTM32F030X8 -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\CoX_Driver\GPS_NEO_6M -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\stm32_lib\inc -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\CoX_Driver -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\cmsis_boot -I..\..\..\..\..\Users\Acer\Documents\CooCox -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\stm32_lib -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL -I..\..\..\..\..\Users\Acer\Documents\CooCox\STM32_UART_SPL\cmsis_core">
+      <target file="stm32f0xx_gpio.o" lastModified="15ff84332a0">
          <source file="..\..\..\stm32_lib\src\stm32f0xx_gpio.c" lastModified="15f22afa356"/>
       </target>
-      <target file="stm32f0xx_tim.o" lastModified="15f599725b8">
+      <target file="stm32f0xx_tim.o" lastModified="15ff8433446">
          <source file="..\..\..\stm32_lib\src\stm32f0xx_tim.c" lastModified="15f22b38e19"/>
       </target>
-      <target file="stm32f0xx_usart.o" lastModified="15f599724e5">
+      <target file="stm32f0xx_usart.o" lastModified="15ff843332c">
          <source file="..\..\..\stm32_lib\src\stm32f0xx_usart.c" lastModified="15f22afa2ff"/>
       </target>
-      <target file="stm32f0xx_rcc.o" lastModified="15f5997236f">
+      <target file="stm32f0xx_rcc.o" lastModified="15ff8433129">
          <source file="..\..\..\stm32_lib\src\stm32f0xx_rcc.c" lastModified="15f22afa3ad"/>
       </target>
-      <target file="system_stm32f0xx_temp.o" lastModified="15f5997241b">
+      <target file="system_stm32f0xx_temp.o" lastModified="15ff8433232">
          <source file="..\..\..\cmsis_boot\system_stm32f0xx_temp.c" lastModified="15f22afa440"/>
       </target>
-      <target file="main.o" lastModified="15fdfde01fb">
-         <source file="..\..\..\main.c" lastModified="15fdfdde4ae"/>
-      </target>
-      <target file="startup_stm32f0xx.o" lastModified="15f599723d9">
+      <target file="startup_stm32f0xx.o" lastModified="15ff84331d5">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f0xx.s" lastModified="15f22afa3f9"/>
+      </target>
+      <target file="main.o" lastModified="15feefdb0e1">
+         <source file="..\..\..\main.c" lastModified="15fef4a2d88"/>
       </target>
    </processor>
 </history>
